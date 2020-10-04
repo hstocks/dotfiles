@@ -175,3 +175,6 @@ function myip() {
     echo -n "External: " ; curl https://ipecho.net/plain -q
     echo
 }
+
+# Fuzzy finder
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
