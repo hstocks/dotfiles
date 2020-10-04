@@ -110,6 +110,8 @@ alias ungz='tar -xvzf'
 alias ga='git add'
 alias gc='git commit'
 alias gs='git status'
+alias gd='git diff'
+alias gp='git push origin master'
 
 if [ $IS_MAC = 1 ]; then
     alias md5sum='md5'
@@ -166,7 +168,7 @@ function up() {
 
 function myip() {
     if [ $IS_MAC = 1 ]; then
-	    echo -n "Internal: " ; /sbin/ifconfig en0 | grep "inet " | awk -F' ' '{print $2}'
+        echo -n "Internal: " ; /sbin/ifconfig en0 | grep "inet " | awk -F' ' '{print $2}'
     elif [ $IS_LINUX = 1 ]; then
         echo -n "Internal: " ; /sbin/ifconfig eth0 | grep "inet " | awk -F" " '{print $2}'
     fi
