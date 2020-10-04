@@ -6,7 +6,7 @@ IS_LINUX=$(expr "$UNAME" = "Linux")
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-	source /etc/bashrc
+    source /etc/bashrc
 fi
 
 #######################################################
@@ -123,47 +123,47 @@ fi
 #######################################################
 
 function extract() {
-	for archive in $*; do
-		if [ -f $archive ] ; then
-			case $archive in
-				*.tar.bz2)   tar xvjf $archive    ;;
-				*.tar.gz)    tar xvzf $archive    ;;
-				*.bz2)       bunzip2 $archive     ;;
-				*.rar)       rar x $archive       ;;
-				*.gz)        gunzip $archive      ;;
-				*.tar)       tar xvf $archive     ;;
-				*.tbz2)      tar xvjf $archive    ;;
-				*.tgz)       tar xvzf $archive    ;;
-				*.zip)       unzip $archive       ;;
-				*.Z)         uncompress $archive  ;;
-				*.7z)        7z x $archive        ;;
-				*)           echo "don't know how to extract '$archive'..." ;;
-			esac
-		else
-			echo "'$archive' is not a valid file!"
-		fi
-	done
+    for archive in $*; do
+        if [ -f $archive ] ; then
+            case $archive in
+                *.tar.bz2)   tar xvjf $archive    ;;
+                *.tar.gz)    tar xvzf $archive    ;;
+                *.bz2)       bunzip2 $archive     ;;
+                *.rar)       rar x $archive       ;;
+                *.gz)        gunzip $archive      ;;
+                *.tar)       tar xvf $archive     ;;
+                *.tbz2)      tar xvjf $archive    ;;
+                *.tgz)       tar xvzf $archive    ;;
+                *.zip)       unzip $archive       ;;
+                *.Z)         uncompress $archive  ;;
+                *.7z)        7z x $archive        ;;
+                *)           echo "don't know how to extract '$archive'..." ;;
+            esac
+        else
+            echo "'$archive' is not a valid file!"
+        fi
+    done
 }
 
 # Create and go to the directory
 function mkdirg() {
-	mkdir -p $1
-	cd $1
+    mkdir -p $1
+    cd $1
 }
 
 # Goes up a specified number of directories  (i.e. up 4)
 function up() {
-	local d=""
-	limit=$1
-	for ((i=1 ; i <= limit ; i++))
-		do
-			d=$d/..
-		done
-	d=$(echo $d | sed 's/^\///')
-	if [ -z "$d" ]; then
-		d=..
-	fi
-	cd $d
+    local d=""
+    limit=$1
+    for ((i=1 ; i <= limit ; i++))
+        do
+            d=$d/..
+        done
+    d=$(echo $d | sed 's/^\///')
+    if [ -z "$d" ]; then
+        d=..
+    fi
+    cd $d
 }
 
 function myip() {
@@ -172,6 +172,6 @@ function myip() {
     elif [ $IS_LINUX = 1 ]; then
         echo -n "Internal: " ; /sbin/ifconfig eth0 | grep "inet " | awk -F" " '{print $2}'
     fi
-	echo -n "External: " ; curl https://ipecho.net/plain -q
+    echo -n "External: " ; curl https://ipecho.net/plain -q
     echo
 }
